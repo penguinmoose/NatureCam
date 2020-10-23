@@ -6,16 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NatureCam</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: sans-serif;
-    }
-
-    th {
-      background-color: #aaaaaa;
-    }
-
-    td {
-      text-align: center;
+      background-color: black;
     }
 
     #heading {
@@ -27,19 +24,128 @@
       border-radius: 10px;
     }
 
-    a:link {
-      color: #888888;
-      text-decoration: none;
+    .row > .column {
+      padding: 0 8px;
     }
 
-    a:visited {
-      color: #888888;
-      text-decoration: none;
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
     }
 
-    a:hover {
-      color: #888888;
-      text-decoration: underline;
+    .column {
+      float: left;
+      width: 25%;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: black;
+    }
+
+    /* Modal Content */
+    .modal-content {
+      position: relative;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 0;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    /* The Close Button */
+    .close {
+      color: white;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #999;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    .cursor {
+      cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    img {
+      margin-bottom: -4px;
+    }
+
+    .demo {
+      opacity: 0.6;
+    }
+
+    .active,
+    .demo:hover {
+      opacity: 1;
+    }
+
+    img.hover-shadow {
+      transition: 0.3s;
+    }
+
+    .hover-shadow:hover {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
   </style>
 </head>
@@ -47,98 +153,300 @@
 <body>
   <div id="heading">NatureCam<div style="font-size: 15pt;">Explore the world's amazing nature images</div>
   </div>
+  <div style="text-align: center; padding: 5px; background-color: #00be85;">You are in grid view. Click on a image to enter focused view.</div>
   <hr>
 
-  <table style="width: 100%;">
-    <tr>
-      <th>forests</th>
-      <th>waterfalls</th>
-      <th>rivers</th>
-      <th>trees</th>
-      <th>flowers</th>
-      <th>ocean</th>
-    </tr>
+  <div class="row">
+    <div class="column">
+      <img src="images/001_forest.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td><a href="images/001_forest.jpg">Green forest</a></td>
-      <td><a href="images/008_waterfall.jpg">Waterfall in a cave</a></td>
-      <td><a href="images/015_river.jpg">River image one</a></td>
-      <td><a href="images/024_tree.jpg">Tree that looks like a person</a></td>
-      <td><a href="images/028_flower.jpg">Daisy</a></td>
-      <td><a href="images/031_ocean.jpg">Seal</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/002_forest-fall.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td><a href="images/002_forest-fall.jpg">Forest in fall</a></td>
-      <td><a href="images/009_waterfall.jpg">Waterfall image two</a></td>
-      <td><a href="images/016_river.jpg">Curvy river one</a></td>
-      <td><a href="images/025_tree.jpg">Tree shaped like a mushroom</a></td>
-      <td><a href="images/029_flower-garden.jpg">Flower garden</a></td>
-      <td><a href="images/032_ocean.jpg">Coral reef one</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/003_forest.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td><a href="images/003_forest.jpg">Forest with fog</a></td>
-      <td><a href="images/010_waterfall.jpg">Waterfall image three</a></td>
-      <td><a href="images/017_river.jpg">Curvy river two</a></td>
-      <td><a href="images/026_tree.jpg">Tree tunnel</a></td>
-      <td><a href="images/030_flower.jpg">What flower is this?</a></td>
-      <td><a href="images/032_ocean.jpg">Coral reef two</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/004_forest.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td><a href="images/004_forest.jpg">Forest with flowers, tall trees, and the sun shining through</a></td>
-      <td><a href="images/011_waterfall.jpg">The beutiful waterfall</a></td>
-      <td><a href="images/018_river.jpg">River image four</a></td>
-      <td><a href="images/024_tree.jpg">Tall trees</a></td>
-      <td></td>
-      <td><a href="images/033_ocean.jpg">Coral reef two</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/005_shore.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td><a href="images/005_shore.jpg">The water, the rocks, and the forest</a></td>
-      <td><a href="images/012_waterfall.jpg">Waterfall image five</a></td>
-      <td><a href="images/019_river.jpg">River image five</a></td>
-      <td></td>
-      <td></td>
-      <td><a href="images/034_ocean.jpg">How would you discribe this?</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/006_forest-sunset.jpg" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td><a href="images/006_forest-sunset.jpg">Forest sunset</a></td>
-      <td><a href="images/013_waterfall.jpg">Water falling from a great hight</a></td>
-      <td><a href="images/020_river.jpg">River image six</a></td>
-      <td></td>
-      <td></td>
-      <td><a href="images/035_ocean.jpg">Coral reef three</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/007_forest-house.jpg" style="width:100%" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td><a href="images/007_forest-house.jpg">A house in the forest</a></td>
-      <td><a href="images/014_waterfall.jpg">Waterfall flowing into a river</a></td>
-      <td><a href="images/021_river.jpg">Waterfall going into a whirlpool that flows out into a river</a></td>
-      <td></td>
-      <td></td>
-      <td><a href="images/036_ocean.jpg">Seahorse</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/008_waterfall.png" style="width:100%" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td></td>
-      <td></td>
-      <td><a href="images/022_river.jpg">Curvy river three</a></td>
-      <td></td>
-      <td></td>
-      <td><a href="images/037_ocean.jpg">Coral reef four</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/009_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(9)" class="hover-shadow cursor">
+    </div>
 
-    <tr>
-      <td></td>
-      <td></td>
-      <td><a href="images/023_river.jpg">River sunset</a></td>
-      <td></td>
-      <td></td>
-      <td><a href="images/037_ocean.jpg">Coral reef five</a></td>
-    </tr>
+    <div class="column">
+      <img src="images/010_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+    </div>
+
+    <div class="column">
+      <img src="images/011_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+    </div>
+
+    <div class="column">
+      <img src="images/012_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+    </div>
+
+    <div class="column">
+      <img src="images/013_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+    </div>
+
+    <div class="column">
+      <img src="images/014_waterfall-to-river.png" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+    </div>
+
+    <div class="column">
+      <img src="images/015_river.jpg" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+    </div>
+
+    <div class="column">
+      <img src="images/016_river.jpg" style="width:100%" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+    </div>
+
+    <div class="column">
+      <img src="images/017_river.jpg" style="width:100%" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+    </div>
+
+    <div class="column">
+      <img src="images/018_river.jpg" style="width:100%" onclick="openModal();currentSlide(9)" class="hover-shadow cursor">
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">Exit focused view</span>
+    <div class="modal-content">
+
+      <div class="mySlides">
+        <div class="numbertext">1 / 53</div>
+        <img src="images/001_forest.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">2 / 53</div>
+        <img src="images/002_forest-fall.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 53</div>
+        <img src="images/003_forest.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">4 / 53</div>
+        <img src="images/004_forest.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">5 / 53</div>
+        <img src="images/005_shore.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">6 / 53</div>
+        <img src="images/006_forest-sunset.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">7 / 53</div>
+        <img src="images/007_forest-house.jpg">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">8 / 53</div>
+        <img src="images/008_waterfall.png" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">9 / 53</div>
+        <img class="demo cursor" src="images/009_waterfall.jpg" style="width:100%" onclick="currentSlide(4)">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">10 / 53</div>
+        <img src="images/010_waterfall.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">11 / 53</div>
+        <img src="images/011_waterfall.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">12 / 53</div>
+        <img src="images/012_waterfall.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">13 / 53</div>
+        <img src="images/013_waterfall.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">14 / 53</div>
+        <img src="images/014_waterfall-to-river.png" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">15 / 53</div>
+        <img src="images/015_river.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">16 / 53</div>
+        <img src="images/016_river.jpg">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">17 / 53</div>
+        <img src="images/017_river.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">18 / 53</div>
+        <img class="demo cursor" src="images/018_river.jpg" style="width:100%" onclick="currentSlide(4)">
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      <div class="column">
+        <img class="demo cursor" src="images/001_forest.jpg" style="width:100%" onclick="currentSlide(1)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/002_forest-fall.jpg" style="width:100%" onclick="currentSlide(2)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/003_forest.jpg" style="width:100%" onclick="currentSlide(3)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/004_forest.jpg" style="width:100%" onclick="currentSlide(4)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/005_shore.jpg" style="width:100%" onclick="currentSlide(5)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/006_forest-sunset.jpg" style="width:100%" onclick="currentSlide(6)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/007_forest-house.jpg" style="width:100%" onclick="currentSlide(7)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/008_waterfall.png" style="width:100%" onclick="currentSlide(8)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/009_waterfall.jpg" style="width:100%" onclick="currentSlide(9)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/010_waterfall.jpg" style="width:100%" onclick="currentSlide(10)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/011_waterfall.jpg" style="width:100%" onclick="currentSlide(11)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/012_waterfall.jpg" style="width:100%" onclick="currentSlide(12)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/013_waterfall.jpg" style="width:100%" onclick="currentSlide(13)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/014_waterfall-to-river.png" style="width:100%" onclick="currentSlide(14)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/015_river.jpg" style="width:100%" onclick="currentSlide(15)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/016_river.jpg" style="width:100%" onclick="currentSlide(16)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/017_river.jpg" style="width:100%" onclick="currentSlide(17)">
+      </div>
+
+      <div class="column">
+        <img class="demo cursor" src="images/018_river.jpg" style="width:100%" onclick="currentSlide(18)">
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function openModal() {
+      document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demo");
+
+      if (n > slides.length) {
+        slideIndex = 1
+      }
+
+      if (n < 1) {
+        slideIndex = slides.length
+      }
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
   </table>
 </body>
 
