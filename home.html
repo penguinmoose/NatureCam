@@ -24,7 +24,7 @@
       border-radius: 10px;
     }
 
-    .row > .column {
+    .row>.column {
       padding: 0 8px;
     }
 
@@ -63,18 +63,22 @@
       max-width: 1200px;
     }
 
-    /* The Close Button */
-    .close {
+    /* The lighthouse buttons */
+    .lighthouse-buttons {
       color: white;
+      background-color: #6b6b6b;
+      padding: 10px;
+      border-radius: 5px;
       position: absolute;
       top: 10px;
-      right: 25px;
+      left: 20px;
       font-size: 35px;
       font-weight: bold;
+      float: left;
     }
 
-    .close:hover,
-    .close:focus {
+    .lighthouse-buttons:hover,
+    .lighthouse-buttons:focus {
       color: #999;
       text-decoration: none;
       cursor: pointer;
@@ -112,6 +116,14 @@
       border-radius: 3px 0 0 3px;
     }
 
+    /* Caption text */
+    .caption-container {
+      text-align: center;
+      background-color: black;
+      padding: 2px 16px;
+      color: white;
+    }
+
     /* On hover, add a black background color with a little bit see-through */
     .prev:hover,
     .next:hover {
@@ -131,12 +143,12 @@
       margin-bottom: -4px;
     }
 
-    .demo {
+    .images {
       opacity: 0.6;
     }
 
     .active,
-    .demo:hover {
+    .images:hover {
       opacity: 1;
     }
 
@@ -174,7 +186,7 @@
     </div>
 
     <div class="column">
-      <img src="images/005_shore.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow pointer">
+      <img src="images/005_shore.jpg" style="width:100%" onclick="openModal();currentSlide(5)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
@@ -194,209 +206,217 @@
     </div>
 
     <div class="column">
-      <img src="images/010_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow pointer">
+      <img src="images/010_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(10)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
-      <img src="images/011_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow pointer">
+      <img src="images/011_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(11)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
-      <img src="images/012_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow pointer">
+      <img src="images/012_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(12)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
-      <img src="images/013_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow pointer">
+      <img src="images/013_waterfall.jpg" style="width:100%" onclick="openModal();currentSlide(13)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
-      <img src="images/014_waterfall-to-river.png" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow pointer">
+      <img src="images/014_waterfall-to-river.png" style="width:100%" onclick="openModal();currentSlide(14)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
-      <img src="images/015_river.jpg" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow pointer">
+      <img src="images/015_river.jpg" style="width:100%" onclick="openModal();currentSlide(15)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
-      <img src="images/016_river.jpg" style="width:100%" onclick="openModal();currentSlide(7)" class="hover-shadow pointer">
+      <img src="images/016_river.jpg" style="width:100%" onclick="openModal();currentSlide(16)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
-      <img src="images/017_river.jpg" style="width:100%" onclick="openModal();currentSlide(8)" class="hover-shadow pointer">
+      <img src="images/017_river.jpg" style="width:100%" onclick="openModal();currentSlide(17)" class="hover-shadow pointer">
     </div>
 
     <div class="column">
-      <img src="images/018_river.jpg" style="width:100%" onclick="openModal();currentSlide(9)" class="hover-shadow pointer">
+      <img src="images/018_river.jpg" style="width:100%" onclick="openModal();currentSlide(18)" class="hover-shadow pointer">
     </div>
   </div>
 
+
   <div id="myModal" class="modal">
-    <span class="close pointer" onclick="closeModal()">Exit focused view</span>
+    <div class="lighthouse-buttons pointer" onclick="closeModal()">Exit focused view</div>
+    <div class="lighthouse-buttons pointer" onclick="currentSlide(Math.floor(Math.random() * 18) + 1)" style="left: 340px;">Random image</div>
+
     <div class="modal-content">
 
       <div class="mySlides">
-        <div class="numbertext">1 / 53</div>
+        <div class="numbertext">1 / 54</div>
         <img src="images/001_forest.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">2 / 53</div>
+        <div class="numbertext">2 / 54</div>
         <img src="images/002_forest-fall.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">3 / 53</div>
+        <div class="numbertext">3 / 54</div>
         <img src="images/003_forest.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">4 / 53</div>
+        <div class="numbertext">4 / 54</div>
         <img src="images/004_forest.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">5 / 53</div>
+        <div class="numbertext">5 / 54</div>
         <img src="images/005_shore.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">6 / 53</div>
+        <div class="numbertext">6 / 54</div>
         <img src="images/006_forest-sunset.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">7 / 53</div>
+        <div class="numbertext">7 / 54</div>
         <img src="images/007_forest-house.jpg">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">8 / 53</div>
+        <div class="numbertext">8 / 54</div>
         <img src="images/008_waterfall.png" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">9 / 53</div>
-        <img class="demo pointer" src="images/009_waterfall.jpg" style="width:100%" onclick="currentSlide(4)">
+        <div class="numbertext">9 / 54</div>
+        <img class="images pointer" src="images/009_waterfall.jpg" style="width:100%" onclick="currentSlide(4)">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">10 / 53</div>
+        <div class="numbertext">10 / 54</div>
         <img src="images/010_waterfall.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">11 / 53</div>
+        <div class="numbertext">11 / 54</div>
         <img src="images/011_waterfall.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">12 / 53</div>
+        <div class="numbertext">12 / 54</div>
         <img src="images/012_waterfall.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">13 / 53</div>
+        <div class="numbertext">13 / 54</div>
         <img src="images/013_waterfall.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">14 / 53</div>
+        <div class="numbertext">14 / 54</div>
         <img src="images/014_waterfall-to-river.png" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">15 / 53</div>
+        <div class="numbertext">15 / 54</div>
         <img src="images/015_river.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">16 / 53</div>
+        <div class="numbertext">16 / 54</div>
         <img src="images/016_river.jpg">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">17 / 53</div>
+        <div class="numbertext">17 / 54</div>
         <img src="images/017_river.jpg" style="width:100%">
       </div>
 
       <div class="mySlides">
-        <div class="numbertext">18 / 53</div>
-        <img class="demo pointer" src="images/018_river.jpg" style="width:100%" onclick="currentSlide(4)">
+        <div class="numbertext">18 / 54</div>
+        <img src="images/018_river.jpg" style="width:100%" onclick="currentSlide(4)">
       </div>
 
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
+
+
       <div class="column">
-        <img class="demo pointer" src="images/001_forest.jpg" style="width:100%" onclick="currentSlide(1)">
+        <img class="images pointer" src="images/001_forest.jpg" style="width:100%" onclick="currentSlide(1)" alt="Green forest">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/002_forest-fall.jpg" style="width:100%" onclick="currentSlide(2)">
+        <img class="images pointer" src="images/002_forest-fall.jpg" style="width:100%" onclick="currentSlide(2)" alt="Forest in fall">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/003_forest.jpg" style="width:100%" onclick="currentSlide(3)">
+        <img class="images pointer" src="images/003_forest.jpg" style="width:100%" onclick="currentSlide(3)" alt="Forest with fog">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/004_forest.jpg" style="width:100%" onclick="currentSlide(4)">
+        <img class="images pointer" src="images/004_forest.jpg" style="width:100%" onclick="currentSlide(4)" alt="Forest with flowers, tall trees, and the sun shining through">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/005_shore.jpg" style="width:100%" onclick="currentSlide(5)">
+        <img class="images pointer" src="images/005_shore.jpg" style="width:100%" onclick="currentSlide(5)" alt="The water, the rocks, and the forest">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/006_forest-sunset.jpg" style="width:100%" onclick="currentSlide(6)">
+        <img class="images pointer" src="images/006_forest-sunset.jpg" style="width:100%" onclick="currentSlide(6)" alt="Forest sunset">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/007_forest-house.jpg" style="width:100%" onclick="currentSlide(7)">
+        <img class="images pointer" src="images/007_forest-house.jpg" style="width:100%" onclick="currentSlide(7)" alt="A house in the forest">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/008_waterfall.png" style="width:100%" onclick="currentSlide(8)">
+        <img class="images pointer" src="images/008_waterfall.png" style="width:100%" onclick="currentSlide(8)" alt="Waterfall in a cave">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/009_waterfall.jpg" style="width:100%" onclick="currentSlide(9)">
+        <img class="images pointer" src="images/009_waterfall.jpg" style="width:100%" onclick="currentSlide(9)" alt="Waterfall image two">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/010_waterfall.jpg" style="width:100%" onclick="currentSlide(10)">
+        <img class="images pointer" src="images/010_waterfall.jpg" style="width:100%" onclick="currentSlide(10)" alt="Waterfall image three">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/011_waterfall.jpg" style="width:100%" onclick="currentSlide(11)">
+        <img class="images pointer" src="images/011_waterfall.jpg" style="width:100%" onclick="currentSlide(11)" alt="The beutiful waterfall">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/012_waterfall.jpg" style="width:100%" onclick="currentSlide(12)">
+        <img class="images pointer" src="images/012_waterfall.jpg" style="width:100%" onclick="currentSlide(12)" alt="Waterfall image five">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/013_waterfall.jpg" style="width:100%" onclick="currentSlide(13)">
+        <img class="images pointer" src="images/013_waterfall.jpg" style="width:100%" onclick="currentSlide(13)" alt="Water falling from a great hight">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/014_waterfall-to-river.png" style="width:100%" onclick="currentSlide(14)">
+        <img class="images pointer" src="images/014_waterfall-to-river.png" style="width:100%" onclick="currentSlide(14)" alt="Waterfall flowing into a river">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/015_river.jpg" style="width:100%" onclick="currentSlide(15)">
+        <img class="images pointer" src="images/015_river.jpg" style="width:100%" onclick="currentSlide(15)" alt="River image one">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/016_river.jpg" style="width:100%" onclick="currentSlide(16)">
+        <img class="images pointer" src="images/016_river.jpg" style="width:100%" onclick="currentSlide(16)" alt="Curvy river one">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/017_river.jpg" style="width:100%" onclick="currentSlide(17)">
+        <img class="images pointer" src="images/017_river.jpg" style="width:100%" onclick="currentSlide(17)" alt="Curvy river two">
       </div>
 
       <div class="column">
-        <img class="demo pointer" src="images/018_river.jpg" style="width:100%" onclick="currentSlide(18)">
+        <img class="images pointer" src="images/018_river.jpg" style="width:100%" onclick="currentSlide(18)" alt="River image four">
       </div>
     </div>
   </div>
@@ -425,7 +445,8 @@
     function showSlides(n) {
       var i;
       var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
+      var dots = document.getElementsByClassName("images");
+      var captionText = document.getElementById("caption");
 
       if (n > slides.length) {
         slideIndex = 1
@@ -445,6 +466,7 @@
 
       slides[slideIndex - 1].style.display = "block";
       dots[slideIndex - 1].className += " active";
+      captionText.innerHTML = dots[slideIndex - 1].alt;
     }
   </script>
   </table>
